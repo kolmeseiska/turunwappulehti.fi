@@ -8,15 +8,62 @@
   <title>Turun Wappulehti</title>
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="index.css">
-  
+
 </head>
 
-<body>
-  <section class='turun-wappulehti-coming-soon'>
+<body class='turun-wappulehti'>
+  <section id='main'>
+    <span class='intro-card'>
+      <h1 class='intro'>Turun Wappulehti 2021</h1>
+      <span class='suit top-left'>
+        <img src='images/digit-logo.png' alt='digit' />
+      </span>
+      <span class='suit top-right'>
+        <img src='images/nucleus-logo.png' alt='digit' />
+      </span>
+      <span class='suit bottom-left'>
+        <img src='images/adamas-logo.png' alt='digit' />
+      </span>
+      <span class='suit bottom-right'>
+        <img src='images/machina-logo.png' alt='digit' />
+      </span>
+    </span>
+    <div class='participate'>
+      <a href='#vitsit'>
+        Osallistu!
+      </a>
+      <div class='slide-down'>
+        <i class="arrow down"></i>
+      </div>
+    </div>
     <div class='dreams'>
       <img class='cards' src='images/kortit.png' alt='Turun wappulehti tulossa...' />
     </div>
   </section>
+  <section id='vitsit'>
+    <div>
+      <h2>Lähetä vitsisi lehteen</h2>
+      <form method="POST" action="" id="joke-form">
+        <div>
+          <div class="LabelWrapper"><label for="name">Nimi</label></div>
+          <input type="text" name="name" id="name-field" />
+        </div>
+        <div>
+          <div class="LabelWrapper"><label for="mail">Sähköposti</label></div>
+          <input type="text" name="mail" id="email-field" />
+        </div>
+        <div>
+          <div class="LabelWrapper"><label for="vitsi">Vitsi</label></div>
+          <textarea rows="5" name="joke" id="joke-field"></textarea>
+        </div>
+        <div class="align-right">
+          <div id="loading-animation" class="loading hidden"></div>
+          <button type="submit" id="submit-button" disabled>Lähetä</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  <script src="scripts/submitJoke.js"></script>
 </body>
 
 </html>
