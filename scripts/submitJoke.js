@@ -15,15 +15,17 @@ document.getElementById('joke-field').addEventListener('keyup', validate);
 if (formEl) {
   formEl.addEventListener('submit', function(event) {
     event.preventDefault();
-
+    
     submitButton.disabled = true;
     loadingAnimation.className = 'loading';
-
+    
     var body = [
       formEl[0].value,
       formEl[1].value,
       formEl[2].value
     ];
+
+    owlFlight();
 
     fetch(apiUrl, {
       method: 'POST',
@@ -33,18 +35,29 @@ if (formEl) {
       },
       body: JSON.stringify(body)
     })
-      .then((res, err) => {
-        if (err) console.log(err);
-        return res.json();
-      })
-      .then(data => {
-        loadingAnimation.className = 'loading hidden';
-
-        formEl[0].value = formEl[1].value = formEl[2].value = '';
-
-        if (data.statusCode !== 200) {
-          alert('Jotain meni nyt mönkään');
-        }
-      });
+    .then((res, err) => {
+      if (err) console.log(err);
+      return res.json();
+    })
+    .then(data => {
+      loadingAnimation.className = 'loading hidden';
+      
+      formEl[0].value = formEl[1].value = formEl[2].value = '';
+      
+      if (data.statusCode !== 200) {
+        alert('Jotain meni nyt mönkään');
+      }
+    });
   });
+}
+
+function owlFlight() {
+  var owl = document.getElementById('superbowl');
+  if (!owl) {
+    console.log("pöllö on kiireinen"); return;
+  }
+  owl.className = "fly";
+  setTimeout(() => {
+    owl.className = "";
+  }, 3000);
 }
