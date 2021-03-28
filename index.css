@@ -154,8 +154,8 @@ img.cards {
 }
 
 .fly {
-  -webkit-animation: fly 3s 0s linear alternate both;
-  animation: fly 3s 0s linear alternate both;
+  -webkit-animation: fly 5s 0s ease-in-out alternate both;
+  animation: fly 5s 0s ease-in-out alternate both;
 }
 
 /* ----------------------------------------------
@@ -230,13 +230,13 @@ img.cards {
   }
 
   50% {
-    -webkit-transform: translate(-30vh, 40vw);
-    transform: translate(-30vh, 40vw) scale(2);
+    -webkit-transform: translate(-20vw, -50vh);
+    transform: translate(-20vw, -50vh) scale(2);
   }
 
   100% {
-    -webkit-transform: translate(70vh, -80vw);
-    transform: translate(70vh, -80vw) scale(4);
+    -webkit-transform: translate(40vw, -100vh);
+    transform: translate(40vw, -100vh) scale(4);
   }
 }
 

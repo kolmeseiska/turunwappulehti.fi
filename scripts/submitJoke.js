@@ -59,5 +59,5 @@ function owlFlight() {
   owl.className = "fly";
   setTimeout(() => {
     owl.className = "";
-  }, 3000);
+  }, 5000);
 }
