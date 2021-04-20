@@ -10,8 +10,10 @@ html, body {
 }
 
 body {
-  background-color: #000000;
-  background-image: linear-gradient(-147deg, #000000 0%, #2c3e50 74%);
+  background-color: #031720;
+  background-image: url(/images/card-patterns-tile-blue.png);
+  background-repeat: repeat;
+  background-size: 3rem;
 }
 
 .turun-wappulehti>section {
