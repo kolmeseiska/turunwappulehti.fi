@@ -41,7 +41,7 @@ section>.content {
 
 section#main {
   background-color: #91b7eb;
-  background-image: url(/images/wappulehti1.jpg);
+  background-image: url(/images/wappulehti1-hd.jpg);
   background-size: contain;
 }
 
@@ -61,7 +61,7 @@ section#release {
 }
 
 .release-image {
-  background-image: url(/images/wappulehti2.jpg);
+  background-image: url(/images/wappulehti2-hd.jpg);
   background-size: cover;
   background-position: center;
 }
