@@ -58,7 +58,6 @@ section#release {
 .column {
   flex-basis: 50%;
   flex-grow: 1;
-  min-width: 800px;
 }
 
 .release-image {
@@ -77,7 +76,6 @@ section#release {
 }
 
 .release-details > div {
-  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -365,10 +363,13 @@ h1.intro {
     background-size: cover;
     background-position: center;
   }
-  /* section#release {
-    flex-direction: column;
-  } */
   .suit {
     width: 2rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  p {
+    font-size: 1rem;
   }
 }
