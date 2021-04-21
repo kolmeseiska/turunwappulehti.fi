@@ -20,19 +20,17 @@ body {
 .turun-wappulehti>section {
   height: 100vh;
   width: 100%;
+  position: relative;
 }
 
-section.hero {
-  background-color: #91b7eb;
-  background-image: url(/images/wappulehti1.jpg);
-  background-size: contain;
+.text-center {
+  text-align: center;
 }
 
 section>.content {
   display: flex;
   height: 100%;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
   margin: 0 auto;
   width: 1200px;
@@ -41,12 +39,56 @@ section>.content {
   overflow: hidden;
 }
 
-.hero>.content {
-  justify-content: space-around;
+section#main {
+  background-color: #91b7eb;
+  background-image: url(/images/wappulehti1.jpg);
+  background-size: contain;
 }
+
+#main>.content {
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+section#release {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.column {
+  flex-basis: 50%;
+  flex-grow: 1;
+  min-width: 800px;
+}
+
+.release-image {
+  background-image: url(/images/wappulehti2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.release-details {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.release-details > div {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 
 h1 {
   font-size: 5rem;
+}
+
+p {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
@@ -81,7 +123,6 @@ h1.intro {
   align-items: center;
   background-color: whitesmoke;
   padding: 1rem 1.5rem;
-  border: 0.3rem solid black;
   border-radius: 1rem;
   position: relative;
   text-align: center;
@@ -93,6 +134,7 @@ h1.intro {
   display: inline-block;
 }
 
+.release-image img
 .suit img {
   width: 100%;
   height: auto;
@@ -130,7 +172,8 @@ h1.intro {
 }
 
 .intro-participate {
-  background-color: rgba(0,0,0,0.6);;
+  background-color: rgba(0, 0, 0, 0.6);
+  ;
   display: inline-block;
   text-align: center;
   font-size: 2rem;
@@ -317,11 +360,14 @@ h1.intro {
   #ramble {
     font-size: 4vw;
   }
-  section.hero {
+  section#main {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
   }
+  /* section#release {
+    flex-direction: column;
+  } */
   .suit {
     width: 2rem;
   }
