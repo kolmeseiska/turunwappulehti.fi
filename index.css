@@ -14,24 +14,39 @@ body {
   background-image: url(/images/card-patterns-tile-blue.png);
   background-repeat: repeat;
   background-size: 3rem;
+  position: relative;
 }
 
 .turun-wappulehti>section {
-  display: flex;
   height: 100vh;
+  width: 100%;
+}
+
+section.hero {
+  background-color: #91b7eb;
+  background-image: url(/images/wappulehti1.jpg);
+  background-size: contain;
+}
+
+section>.content {
+  display: flex;
+  height: 100%;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin: 0 auto;
   width: 1200px;
   max-width: 80%;
   position: relative;
-  /* background-color: brown; */
   overflow: hidden;
+}
+
+.hero>.content {
+  justify-content: space-around;
 }
 
 h1 {
   font-size: 5rem;
-  display: inline;
 }
 
 h2 {
@@ -54,9 +69,18 @@ img.cards {
   z-index: -1;
 }
 
+h1.intro {
+  line-height: 1;
+  text-align: center;
+}
+
 .intro-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   background-color: whitesmoke;
-  padding: 2.5rem 3.5rem;
+  padding: 1rem 1.5rem;
   border: 0.3rem solid black;
   border-radius: 1rem;
   position: relative;
@@ -64,22 +88,14 @@ img.cards {
   color: black;
 }
 
-.intro-card h1 {
-  line-height: 1;
-}
-
 .suit {
-  height: 2.5rem;
-  width: 2.5rem;
+  width: 3rem;
+  display: inline-block;
 }
 
 .suit img {
   width: 100%;
   height: auto;
-}
-
-.top-left, .top-right, .bottom-left, .bottom-right {
-  position: absolute;
 }
 
 .top-left {
@@ -109,12 +125,22 @@ img.cards {
   color: white;
   display: inline-block;
   text-align: center;
-}
-
-.participate {
-  display: block;
   font-size: 2rem;
   text-decoration: none;
+}
+
+.intro-participate {
+  background-color: rgba(0,0,0,0.6);;
+  display: inline-block;
+  text-align: center;
+  font-size: 2rem;
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .participate:hover, .info:hover {
@@ -230,12 +256,10 @@ img.cards {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0) scale(0);
   }
-
   50% {
     -webkit-transform: translate(-20vw, -50vh);
     transform: translate(-20vw, -50vh) scale(2);
   }
-
   100% {
     -webkit-transform: translate(40vw, -100vh);
     transform: translate(40vw, -100vh) scale(4);
@@ -273,6 +297,11 @@ img.cards {
   position: relative;
   padding: 0.5rem 1rem;
   width: 200px;
+  background-color: whitesmoke;
+}
+
+#submit-button:disabled {
+  background-color: gray;
 }
 
 @media screen and (max-width: 700px) {
@@ -282,13 +311,18 @@ img.cards {
   h2 {
     font-size: 2rem;
   }
-  .intro-card {
-    padding: 1rem 0.5rem;
-  }
   #vitsit {
     font-size: 1rem;
   }
   #ramble {
     font-size: 4vw;
+  }
+  section.hero {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .suit {
+    width: 2rem;
   }
 }
