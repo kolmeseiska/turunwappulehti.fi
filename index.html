@@ -21,6 +21,37 @@
       </div>
     </div>
   </section>
+  <section id='vitsit'>
+    <div class='content'>
+      <div>
+        <h2>Lähetä vitsisi lehteen</h2>
+        <form method="POST" action="" id="joke-form">
+          <div>
+            <div class="LabelWrapper"><label for="vitsi">Vitsi</label></div>
+            <textarea rows="4" name="joke" id="joke-field"></textarea>
+          </div>
+          <div>
+            <div class="LabelWrapper"><label for="email">Sähköposti</label></div>
+            <input type="text" name="email" id="email-field" />
+          </div>
+          <div>
+            <div class="LabelWrapper"><label for="guild">Kilta</label></div>
+            <input type="text" name="guild" id="name-field" />
+          </div>
+          <div>
+            <div class="LabelWrapper"><label for="fuksi">Olen fuksi</label></div>
+            <input type='checkbox' name="fuksi" id="fuksi-field"></input>
+          </div>
+          <div class="align-right">
+            <div id="loading-animation" class="loading hidden"></div>
+            <button type="submit" id="submit-button">
+              Lähetä
+            </button>
+          </div>
+        </form>
+      </div>
+  </section>
+  <script src="scripts/submitJoke.js"></script>
 </body>
 
 </html>
