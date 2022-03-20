@@ -12,7 +12,7 @@
 </head>
 
 <body class='turun-wappulehti'>
-  <section id='main' class='block primary full-center'>
+  <section id='main' class='block primary center-full'>
     <div class='relative text-center '>
       <img class='ponkeli entrance' alt='pönkeli' src='images/ponkeli-logo-white.png' />
       <div class='intro fade-in delay'>
@@ -21,37 +21,86 @@
       </div>
     </div>
   </section>
-  <section id='vitsit'>
-    <div class='content'>
-      <div>
-        <h2>Lähetä vitsisi lehteen</h2>
-        <form method="POST" action="" id="joke-form">
-          <div>
-            <div class="LabelWrapper"><label for="vitsi">Vitsi</label></div>
-            <textarea rows="4" name="joke" id="joke-field"></textarea>
+  <section id='vitsit' class='flow fade-in delay'>
+    <h2 class='text-center'>Osallistu vitsikilpailuun!</h2>
+    <p class='text-center'>Lähetä meille paras vitsisi ja voita Wolt-lahjakortti sekä mainetta killallesi!</p>
+    <div class='columns'>
+      <div id="rules" class='flow'>
+        <h3 class='text-intro'>Vitsikilpailun säännöt ja ohjeet</h3>
+        <p>Kilpailuaika heti → 1.4. kello 14.14 asti</p>
+        <p>Lähettämällä vitsin hyväksyt sen mahdollisen käytön tämän vuoden Pönkelissä tai tulevissa julkaisuissa.</p>
+        <p>Älä tee tyhmästi. Hylkäämme rasistiset sekä loukkaavat tekstit.</p>
+        <br />
+        <p><b>Palkinnot saavat</b></p>
+        <p>
+          <ul>
+            <li>
+              <b>Hillittömin kilta</b>
+            </li>
+            <li>
+              <b>Uutterin kilta</b>
+            </li>
+            <li>
+              <b>Hillittömin vitsiniekka</b>
+            </li>
+            <li>
+              <b>Veikein fuksi</b>
+            </li>
+          </ul>
+        </p>
+        <p>
+
+        </p>
+        <p>Voittajille ilmoitetaan henkilökohtaisesti, joten varmista toimiva sähköpostiosoite.</p>
+        <br>
+
+        <p><b>Kriteereitä</b></p>
+        <p>
+          "Haemme hauskoja, uusia ja tuoreita vitsejä Pönkelin kokoelmaan koko wappukansan iloksi”
+        </p>
+        <p>Psst! Vain lähetetty vitsi voi voittaa!</p>
+        <br>
+      </div>
+      <form id="joke-form" class='flow'>
+        <div class='flow'>
+          <div class='field'>
+            <label for="vitsi">Vitsi</label>
+            <textarea rows="4" name="joke" id="joke"></textarea>
           </div>
-          <div>
-            <div class="LabelWrapper"><label for="email">Sähköposti</label></div>
-            <input type="text" name="email" id="email-field" />
+          <div class='field'>
+            <label for="email">Sähköposti</label>
+            <input type="text" name="email" id="email" />
           </div>
-          <div>
-            <div class="LabelWrapper"><label for="guild">Kilta</label></div>
-            <input type="text" name="guild" id="name-field" />
+          <div class='field'>
+            <label for="guild">Kilta</label>
+            <select type="text" name="guild" id="name">
+              <option hidden value="">-- Valitse --</option>
+              <option value="Adamas">Adamas</option>
+              <option value="Digit">Digit</option>
+              <option value="Machina">Machina</option>
+              <option value="Nucleus">Nucleus</option>
+              <option value="Muu">Muu</option>
+            </select>
           </div>
-          <div>
-            <div class="LabelWrapper"><label for="fuksi">Olen fuksi</label></div>
-            <input type='checkbox' name="fuksi" id="fuksi-field"></input>
+          <div class='field'>
+            <input type='checkbox' name="fuksi" id="fuksi"></input>
+            <label for="fuksi">Olen fuksi</label>
           </div>
-          <div class="align-right">
+          <div class='field'>
             <div id="loading-animation" class="loading hidden"></div>
-            <button type="submit" id="submit-button">
+            <button type="submit" class="btn-submit">
               Lähetä
             </button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
+    </div>
+    <div>
   </section>
   <script src="scripts/submitJoke.js"></script>
+
+  <input type='checkbox' name="fuksi" id="fuksi"></input>
 </body>
+
 
 </html>

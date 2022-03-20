@@ -23,8 +23,8 @@ if(formEl) {
     var body = {
       joke: formEl[0].value,
       email: formEl[1].value,
-      guild: formEl[2].value,
-      isFuksi: formEl[3].value
+      guild: formEl[2].value || 'Muu',
+      isFuksi: formEl[3].checked
     }
 
     fetch(apiUrl, {
@@ -37,18 +37,18 @@ if(formEl) {
     })
       .then((res, err) => {
         if(err) console.log(err)
+        if(res.status !== 200 && res.status !== 400) {
+          alert('Pahoittelut! Jotain meni pieleen')
+        }
         return res.json()
       })
       .then(data => {
+        // TODO: validation joke can be max 3000 chars long etc
+        console.log('Response', data)
         loadingAnimation.className = 'loading hidden'
 
         formEl[0].value = formEl[1].value = formEl[2].value = ''
-        formElem[3].checked = false
-
-        
-        if(data.statusCode !== 200) {
-          alert('Jotain meni nyt mönkään')
-        }
+        formEl[3].checked = false
       })
   })
 }
