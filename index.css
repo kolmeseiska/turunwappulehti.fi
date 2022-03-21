@@ -39,7 +39,7 @@ section {
 }
 
 #main {
-  height: 95vh;
+  height: 500px;
 }
 
 .relative {
@@ -52,6 +52,10 @@ section {
 
 .m-auto {
   margin: 0 auto;
+}
+
+p {
+  font-size: 1em;
 }
 
 .block {
@@ -103,6 +107,7 @@ section {
 
 .intro {
   --font-multiplier: 0.7;
+
 }
 
 .intro>* {
@@ -142,8 +147,8 @@ section {
   justify-content: center;
   gap: 2rem;
   padding: 1rem;
-  max-width: 800px;
   margin: 2rem auto;
+  max-width: 900px;
 
 }
 .columns > * {
@@ -157,7 +162,7 @@ form#joke-form {
 }
 
 #rules {
-  max-width: 35ch;
+  max-width: 40ch;
 }
 
 .field textarea,
@@ -220,5 +225,11 @@ form#joke-form .field>input[type=checkbox]+label {
 
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  html,body {
+    font-size: 14px;
   }
 }
