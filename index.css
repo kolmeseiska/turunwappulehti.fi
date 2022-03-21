@@ -13,6 +13,9 @@
   --color-gray-800: #2e3039;
   --color-gray-900: #1f2028;
 
+  --color-accent: #08b993;
+  --color-error: #b90834;
+
   --text-primary: var(--color-gray-200);
   --text-secondary: var(--color-gray-900);
   --text-primary-dim: var(--color-gray-900);
@@ -101,6 +104,7 @@ p {
   width: 100%;
   max-width: 900px;
 }
+
 .ponkeli.small {
   max-width: 120px;
 }
@@ -151,7 +155,8 @@ p {
   max-width: 900px;
 
 }
-.columns > * {
+
+.columns>* {
   /* margin: 2rem; */
   /* flex-basis: 50%; */
   flex-grow: 1;
@@ -171,7 +176,26 @@ form#joke-form {
   width: 100%;
   max-width: 900px;
   border-radius: 0.5rem;
+  margin-top: 0.2rem;
   padding: 0.7rem;
+  border: none;
+}
+
+.field textarea:focus-visible,
+.field select:focus-visible,
+.field input:focus-visible {
+  outline: var(--color-accent) 2px solid;
+}
+
+.error-outline {
+  outline: var(--color-error) 2px solid;
+}
+.error {
+  color: var(--color-error);
+}
+
+.hidden {
+  display: none;
 }
 
 form#joke-form .field {
@@ -192,20 +216,44 @@ form#joke-form .field>input[type=checkbox] {
   border-radius: 0;
   padding: 0;
 }
+
 form#joke-form .field>input[type=checkbox]+label {
   display: inline-block;
 }
 
 .btn-submit {
   border-radius: 0.25rem;
-  background-color: var(--color-white);
   padding: 0.5rem 1.25rem;
   border: none;
+  font-weight: bold;
+  color: var(--color-black);
+  background-color: var(--color-white);
+  outline: var(--color-accent) 2px solid ;
+  transition: background-color .3s, color .3s;
 }
 
-#vitsit > p {
+.btn-submit:hover {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+.btn-submit:active {
+  color: var(--color-gray-300);
+}
+.btn-submit:disabled {
+  outline: none;
+  background-color: var(--color-gray-600);
+  color: var(--color-gray-400);
+}
+
+#vitsit>p {
   padding: 0 2rem;
 }
+
+#errors {
+  max-width: 300px;
+  white-space: normal;
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -229,7 +277,7 @@ form#joke-form .field>input[type=checkbox]+label {
 }
 
 @media screen and (max-width: 400px) {
-  html,body {
+  html, body {
     font-size: 14px;
   }
 }

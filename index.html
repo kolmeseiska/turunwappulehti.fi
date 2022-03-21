@@ -33,40 +33,38 @@
         <br />
         <p><b><u>Palkinnon saavat</u></b></p>
         <p>
-          <ul class='flow'>
-            <li>
-              <b>Hillittömin kilta</b>
-              <div>
-                <small>Parhaimmat vitsit lähettänyt kilta</small>
-              </div>
-            </li>
-            <li>
-              <b>Uutterin kilta</b>
-              <div>
-                <small>Eniten vitsejä lähettänyt kilta</small>
-              </div>
-            </li>
-            <li>
-              <b>Hillittömin vitsiniekka</b>
-              <div>
-                <small>Kolme parasta vitsiä kertonutta henkilöä, jotka saavat palkinnoksi Wolt-lahjakortteja</small>
-              </div>
-            </li>
-            <li>
-              <b>Veikein fuksi</b>
-              <div>
-                <small>Parhaimman vitsin lähettänyt fuksi. Palkinnoksi Wolt-lahjakortti</small>
-              </div>
-            </li>
-          </ul>
+        <ul class='flow'>
+          <li>
+            <b>Hillittömin kilta</b>
+            <div>
+              <small>Parhaimmat vitsit lähettänyt kilta</small>
+            </div>
+          </li>
+          <li>
+            <b>Uutterin kilta</b>
+            <div>
+              <small>Eniten vitsejä lähettänyt kilta</small>
+            </div>
+          </li>
+          <li>
+            <b>Hillittömin vitsiniekka</b>
+            <div>
+              <small>Kolme parasta vitsiä kertonutta henkilöä, jotka saavat palkinnoksi Wolt-lahjakortteja</small>
+            </div>
+          </li>
+          <li>
+            <b>Veikein fuksi</b>
+            <div>
+              <small>Parhaimman vitsin lähettänyt fuksi. Palkinnoksi Wolt-lahjakortti</small>
+            </div>
+          </li>
+        </ul>
         </p>
         <p>
-
         </p>
         <p>Tulokset ja vitsit julkistetaan Wapunaloitusbileissä Turussa 13.3. Paikka ja aika tarkentuvat myöhemmin.</p>
         <p>Voittajille ilmoitetaan henkilökohtaisesti, joten varmista toimiva sähköpostiosoite.</p>
         <br>
-
         <p><b><u>Kriteereitä</u></b></p>
         <p>
           Haemme hauskoja, uusia ja tuoreita vitsejä Pönkelin kokoelmaan koko wappukansan iloksi
@@ -100,8 +98,13 @@
             <label for="fuksi">Olen fuksi</label>
           </div>
           <div class='field'>
-            <div id="loading-animation" class="loading hidden"></div>
-            <button type="submit" class="btn-submit" id="submit-button">
+            <p id='errors' class='error hidden'>
+              Hups!
+              <span id='error-messages'></span>
+            </p>
+          </div>
+          <div class='field'>
+            <button type="submit" class="btn-submit" id="submit-button" disabled>
               Lähetä
             </button>
           </div>
