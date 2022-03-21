@@ -37,12 +37,8 @@ html, body {
   font-size: 18px;
 }
 
-section {
-  min-height: 700px;
-}
-
 #main {
-  height: 500px;
+  height: 90vh;
 }
 
 .relative {
@@ -190,6 +186,7 @@ form#joke-form {
 .error-outline {
   outline: var(--color-error) 2px solid;
 }
+
 .error {
   color: var(--color-error);
 }
@@ -228,7 +225,7 @@ form#joke-form .field>input[type=checkbox]+label {
   font-weight: bold;
   color: var(--color-black);
   background-color: var(--color-white);
-  outline: var(--color-accent) 2px solid ;
+  outline: var(--color-accent) 2px solid;
   transition: background-color .3s, color .3s;
 }
 
@@ -236,17 +233,20 @@ form#joke-form .field>input[type=checkbox]+label {
   background-color: var(--color-accent);
   color: var(--color-white);
 }
+
 .btn-submit:active {
   color: var(--color-gray-300);
 }
+
 .btn-submit:disabled {
   outline: none;
   background-color: var(--color-gray-600);
   color: var(--color-gray-400);
 }
 
-#vitsit>p {
-  padding: 0 2rem;
+#vitsit > p {
+  padding: 2rem;
+
 }
 
 #errors {
@@ -279,5 +279,9 @@ form#joke-form .field>input[type=checkbox]+label {
 @media screen and (max-width: 400px) {
   html, body {
     font-size: 14px;
+  }
+
+  #main {
+    height: 50vh;
   }
 }
