@@ -11,7 +11,7 @@ html, body {
 
 body {
   background-color: #031720;
-  background-image: url(/images/card-patterns-tile-blue.png);
+  background-image: url(images/card-patterns-tile-blue.png);
   background-repeat: repeat;
   background-size: 3rem;
   position: relative;
@@ -41,7 +41,7 @@ section>.content {
 
 section#main {
   background-color: #91b7eb;
-  background-image: url(/images/wappulehti2-hd.jpg);
+  background-image: url(images/wappulehti2-hd.jpg);
   background-size: contain;
 }
 
@@ -61,7 +61,7 @@ section#release {
 }
 
 .release-image {
-  background-image: url(/images/wappulehti1-hd.jpg);
+  background-image: url(images/wappulehti1-hd.jpg);
   background-size: cover;
   background-position: center;
 }
