@@ -53,8 +53,20 @@ html, body {
   margin: 0 auto;
 }
 
+a {
+  text-decoration: underline;
+  color: var(--text-primary);
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
 p {
   font-size: 1em;
+  line-height: 1.5;
 }
 
 .block {
