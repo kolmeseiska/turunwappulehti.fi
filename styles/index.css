@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+  --color-black: #13171b;
+  --color-white: #f8f9fa;
+  --color-gray-100: #f7f7f7;
+  --color-gray-200: #e6e9ee;
+  --color-gray-300: #dde0e4;
+  --color-gray-400: #818890;
+  --color-gray-500: #535661;
+  --color-gray-600: #4b4c53;
+  --color-gray-700: #3a3d4a;
+  --color-gray-800: #2e3039;
+  --color-gray-900: #1f2028;
+
+  --color-accent: #08b993;
+  --color-error: #b90834;
+
+  --text-primary: var(--color-gray-200);
+  --text-secondary: var(--color-gray-900);
+  --text-primary-dim: var(--color-gray-900);
+  --text-secondary-dim: var(--color-gray-900);
+
+  --bg-primary: var(--color-black);
+  --bg-secondary: var(--color-gray-100);
+}
+
+html, body {
+  height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Montserrat', serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+#main {
+  height: 90vh;
+}
+
+a {
+  text-decoration: underline;
+  color: var(--text-primary);
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.ponkeli {
+  width: 100%;
+  max-width: 900px;
+}
+
+.ponkeli.small {
+  max-width: 120px;
+}
+
+.intro {
+  --font-multiplier: 0.7;
+}
+
+.intro>* {
+  margin-top: 0.5rem;
+  font-size: clamp(1em, 4vw, 2em);
+}
+
+.intro p {
+  font-size: clamp(calc(1em* var(--font-multiplier)), calc(4vw* var(--font-multiplier)), calc(2em* var(--font-multiplier)));
+}
+
+.hero-title {
+  position: absolute;
+  font-size: clamp(3em, 10vw, 6em);
+}
+
+.hero-dim {
+  position: absolute;
+  font-size: clamp(6em, 20vw, 12em);
+  color: var(--text-primary-dim);
+  overflow: hidden;
+}
+
+#rules {
+  max-width: 40ch;
+}
+
+
+#vitsit > p {
+  padding: 2rem;
+
+}
+
+#errors {
+  max-width: 300px;
+  white-space: normal;
+}
+
+
+@media screen and (max-width: 400px) {
+  html, body {
+    font-size: 14px;
+  }
+
+  #main {
+    height: 50vh;
+  }
+}
+
+#canvas {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}

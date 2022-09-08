@@ -1,0 +1,108 @@
+
+.relative {
+  position: relative;
+}
+
+.flow>*+* {
+  margin-top: 1rem;
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.block {
+  display: flex;
+  height: 100%;
+  position: relative;
+  flex-direction: column;
+  padding: 2.5rem clamp(2.5rem, 10vw, 6rem);
+  min-width: 375px;
+  overflow: hidden;
+}
+
+.center-full {
+  justify-content: center;
+  align-items: center;
+}
+
+.center-items {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.primary,
+.primary:active {
+  color: var(--text-primary);
+}
+
+.secondary,
+.secondary:active {
+  color: var(--text-secondary);
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  margin: 2rem auto;
+  max-width: 900px;
+
+}
+
+.columns>* {
+  /* margin: 2rem; */
+  /* flex-basis: 50%; */
+  flex-grow: 1;
+}
+
+.no-select {
+  user-select: none;
+}
+
+.entrance {
+  animation-duration: 1000ms;
+  animation-name: fade-in-up;
+  animation-timing-function: ease-out;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 1000ms forwards;
+  animation-timing-function: ease-out;
+}
+
+.delay {
+  animation-delay: 1200ms;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 50%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
