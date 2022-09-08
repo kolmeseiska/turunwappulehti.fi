@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name='description' content='Pönkeli - Turun yliopiston teekkareiden Wappulehti 2022'>
+  <title>Wappulehti Pönkeli 2022</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <meta property="og:title" content="Pönkeli" />
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Pönkeli - Turun yliopiston teekkareiden Wappulehti 2022">
+  <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
+  <meta property="og:image" content="https://turunwappulehti.fi/images/wappulehti-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="turunwappulehti.fi">
+  <meta property="twitter:url" content="https://turunwappulehti.fi/">
+  <meta name="twitter:title" content="Pönkeli">
+  <meta name="twitter:description" content="Pönkeli - Turun yliopiston teekkareiden Wappulehti 2022">
+  <meta name="twitter:image" content="https://turunwappulehti.fi/images/wappulehti-og.jpg">
+
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body class='turun-wappulehti'>
+  <section id='main' class='block primary center-full'>
+    <div class='relative text-center '>
+      <img class='ponkeli entrance' alt='pönkeli' src='images/ponkeli-logo-white.png' />
+      <div class='intro fade-in delay'>
+        <h1 class='text-intro'>Turkulainen Wappulehti 2022</h1>
+        <!-- <p>Wappu alkaa?</p> -->
+      </div>
+    </div>
+  </section>
+  <section id='vitsit' class='flow fade-in delay'>
+    <h2 class='text-center'>Vitsikilpailu on päättynyt!</h2>
+    <p class='text-center'>Kiitos vitseistänne! 
+      <br />
+      <br />
+      Vitsineuvosto kahlaa teokset läpi ja tulokset julkaistaan Wapunaloitusbileissä 13.4. Night Club Vegasissa!
+      <br />
+      Lisätiedot ja koko wapun ohjelma osoitteessa
+      <br />
+      <a href='https://www.teekkariwappu.fi/' rel='nooper' target='_blank'>Turun teekkariwappu</a>
+    </p>
+    <div class='columns'>
+      <div id="rules" class='flow'>
+        <h3 class='text-intro'>Vitsikilpailun säännöt ja ohjeet</h3>
+        <p>Kilpailuaika vuoden 2022 vitsikilpailulle on päättynyt</p>
+        <p>Voit kuitenkin vapaasti lähettää meille lisää vitsejä. Saatat jopa löytää oman vitsisi seuraavassa painoksessa.</p>
+        <p>Lähettämällä vitsin hyväksyt sen mahdollisen käytön tämän vuoden Pönkelissä tai tulevissa julkaisuissa.</p>
+        <p>Älä tee tyhmästi. Hylkäämme rasistiset sekä loukkaavat tekstit.</p>
+        <br />
+        <p><b><u>Palkinnon saavat</u></b></p>
+        <p>
+        <ul class='flow'>
+          <li>
+            <b>Hillittömin kilta</b>
+            <div>
+              <small>Parhaimmat vitsit lähettänyt kilta</small>
+            </div>
+          </li>
+          <li>
+            <b>Uutterin kilta</b>
+            <div>
+              <small>Eniten vitsejä lähettänyt kilta</small>
+            </div>
+          </li>
+          <li>
+            <b>Hillittömin vitsiniekka</b>
+            <div>
+              <small>Kolme parasta vitsiä kertonutta henkilöä, jotka saavat palkinnoksi Wolt-lahjakortteja</small>
+            </div>
+          </li>
+          <li>
+            <b>Veikein fuksi</b>
+            <div>
+              <small>Parhaimman vitsin lähettänyt fuksi. Palkinnoksi Wolt-lahjakortti</small>
+            </div>
+          </li>
+        </ul>
+        </p>
+        <p>
+        </p>
+        <p>Tulokset ja vitsit julkistetaan Wapunaloitusbileissä Turussa 13.4. Paikka ja aika tarkentuvat myöhemmin.</p>
+        <p>Voittajille ilmoitetaan henkilökohtaisesti, joten varmista toimiva sähköpostiosoite.</p>
+        <br>
+        <p><b><u>Kriteereitä</u></b></p>
+        <p>
+          Haemme hauskoja, uusia ja tuoreita vitsejä Pönkelin kokoelmaan koko wappukansan iloksi
+        </p>
+        <p>Psst! Vain lähetetty vitsi voi voittaa!</p>
+        <br>
+      </div>
+      <form id="joke-form" class='flow'>
+        <div class='flow'>
+          <div class='field'>
+            <label for="joke">Vitsi</label>
+            <textarea rows="4" name="joke" id="joke"></textarea>
+          </div>
+          <div class='field'>
+            <label for="email">Sähköposti</label>
+            <input type="text" name="email" id="email" />
+          </div>
+          <div class='field'>
+            <label for="guild">Kilta</label>
+            <select type="text" name="guild" id="name">
+              <option hidden value="">-- Valitse --</option>
+              <option value="Adamas">Adamas</option>
+              <option value="Digit">Digit</option>
+              <option value="Machina">Machina</option>
+              <option value="Nucleus">Nucleus</option>
+              <option value="Muu">Muu</option>
+            </select>
+          </div>
+          <div class='field'>
+            <input type='checkbox' name="fuksi" id="fuksi"></input>
+            <label for="fuksi">Olen fuksi</label>
+          </div>
+          <div class='field'>
+            <p id='errors' class='error hidden'>
+              Hups!
+              <span id='error-messages'></span>
+            </p>
+          </div>
+          <div class='field'>
+            <button type="submit" class="btn-submit" id="submit-button" disabled>
+              Lähetä
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+  </section>
+  <script src="scripts/submitJoke.js"></script>
+</body>
+
+
+</html>
