@@ -32,7 +32,7 @@ sliders.forEach(([key, target, min = 0.1, max = 5]) => {
   }
 })
 
-function round(value) {
+function round (value) {
   return Math.round((value + Number.EPSILON) * 100) / 100
 }
 
@@ -40,6 +40,17 @@ function scale (value, sourceRangeMin, sourceRangeMax, targetRangeMin, targetRan
   var targetRange = targetRangeMax - targetRangeMin;
   var sourceRange = sourceRangeMax - sourceRangeMin;
   return (value - sourceRangeMin) * targetRange / sourceRange + targetRangeMin;
+}
+function debounce (func, timeout = 100) {
+  let timer;
+  return (...args) => {
+    if(!timer) {
+      func.apply(this, args);
+      timer = setTimeout(() => {
+        timer = undefined
+      }, timeout);
+    }
+  }
 }
 //////////////////
 
@@ -78,14 +89,14 @@ function calcPageFillRadius (x, y) {
   return Math.sqrt(Math.pow(l, 2) + Math.pow(h, 2));
 }
 
+const debouncedEvent = debounce(handleEvent)
 function addClickListeners () {
-  document.addEventListener("touchstart", handleEvent);
-  document.addEventListener("mousedown", handleEvent);
+  // document.addEventListener("touchstart", debouncedEvent);
+  document.addEventListener("mousedown", debouncedEvent);
 };
 
 function handleEvent (e) {
   if(e.touches) {
-    e.preventDefault();
     e = e.touches[0];
   }
   let currentColor = colorPicker.current();
