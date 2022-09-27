@@ -241,11 +241,11 @@ function handleInactiveUser () {
   function clearInactiveTimeout () {
     clearTimeout(inactive);
     main.removeEventListener("mousedown", clearInactiveTimeout);
-    main.removeEventListener("touchstart", clearInactiveTimeout);
+    // main.removeEventListener("touchstart", clearInactiveTimeout);
   }
 
   main.addEventListener("mousedown", clearInactiveTimeout);
-  main.addEventListener("touchstart", clearInactiveTimeout);
+  // main.addEventListener("touchstart", clearInactiveTimeout);
 }
 
 function startFauxClicking () {
