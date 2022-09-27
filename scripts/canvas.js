@@ -1,5 +1,6 @@
 // Borrowed from https://codepen.io/alexzaworski/pen/mEZvrG
 const c = document.getElementById("canvas");
+const main = document.getElementById('main')
 const ctx = c.getContext("2d");
 let cH;
 let cW;
@@ -92,7 +93,7 @@ function calcPageFillRadius (x, y) {
 const debouncedEvent = debounce(handleEvent)
 function addClickListeners () {
   // document.addEventListener("touchstart", debouncedEvent);
-  document.addEventListener("mousedown", debouncedEvent);
+  main.addEventListener("mousedown", debouncedEvent);
 };
 
 function handleEvent (e) {
@@ -218,8 +219,8 @@ let animate = anime({
 });
 
 let resizeCanvas = function() {
-  cW = window.innerWidth;
-  cH = window.innerHeight;
+  cW = main.offsetWidth;
+  cH = main.offsetHeight;
   c.width = cW * devicePixelRatio;
   c.height = cH * devicePixelRatio;
   ctx.scale(devicePixelRatio, devicePixelRatio);
@@ -239,12 +240,12 @@ function handleInactiveUser () {
 
   function clearInactiveTimeout () {
     clearTimeout(inactive);
-    document.removeEventListener("mousedown", clearInactiveTimeout);
-    document.removeEventListener("touchstart", clearInactiveTimeout);
+    main.removeEventListener("mousedown", clearInactiveTimeout);
+    main.removeEventListener("touchstart", clearInactiveTimeout);
   }
 
-  document.addEventListener("mousedown", clearInactiveTimeout);
-  document.addEventListener("touchstart", clearInactiveTimeout);
+  main.addEventListener("mousedown", clearInactiveTimeout);
+  main.addEventListener("touchstart", clearInactiveTimeout);
 }
 
 function startFauxClicking () {
@@ -258,5 +259,5 @@ function fauxClick (x, y) {
   let fauxClick = new Event("mousedown");
   fauxClick.pageX = x;
   fauxClick.pageY = y;
-  document.dispatchEvent(fauxClick);
+  main.dispatchEvent(fauxClick);
 }
