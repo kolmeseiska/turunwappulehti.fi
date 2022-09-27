@@ -41,7 +41,7 @@ html, body {
 }
 
 #main {
-  height: 90vh;
+  height: 90%;
   min-height: 550px;
   padding: 2.5rem clamp(2.5rem, 10vw, 6rem);
 }
@@ -158,6 +158,9 @@ p {
   justify-content: center;
   list-style: none;
   gap: 1rem;
+
+  /* reset */
+  padding-inline-start: 0;
 }
 
 #navbar-nav .nav-item a {
@@ -261,6 +264,7 @@ p {
   .event-box {
     flex-direction: column;
     gap: 1rem;
+    font-size: 0.9rem;
   }
   .event-overlap {
     margin: inherit;
