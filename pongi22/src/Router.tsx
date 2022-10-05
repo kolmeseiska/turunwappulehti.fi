@@ -1,0 +1,32 @@
+import { Outlet, ReactLocation, Router } from '@tanstack/react-location';
+import Admin from './Admin';
+import ResultService from './ResultService';
+
+type Props = {
+  children: JSX.Element
+}
+
+const location = new ReactLocation();
+
+const AppRouter = ({ children }: Props) => {
+  return (
+    <Router
+      location={location}
+      routes={[
+        {
+          path: "/",
+          element: <ResultService />,
+        },
+        {
+          path: "admin",
+          element: <Admin />,
+        },
+      ]}
+    >
+      <Outlet />
+      {children}
+    </Router>
+  )
+}
+
+export default AppRouter
