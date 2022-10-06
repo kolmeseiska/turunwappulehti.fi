@@ -3,7 +3,7 @@ import Admin from './Admin';
 import ResultService from './ResultService';
 
 type Props = {
-  children: JSX.Element
+  children: JSX.Element | JSX.Element[]
 }
 
 const location = new ReactLocation();
@@ -23,8 +23,8 @@ const AppRouter = ({ children }: Props) => {
         },
       ]}
     >
-      <Outlet />
       {children}
+      <Outlet />
     </Router>
   )
 }

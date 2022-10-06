@@ -1,4 +1,5 @@
 import React from 'react'
+import AdminTable from './AdminTable'
 import Overview from './Overview'
 
 type Props = {}
@@ -6,7 +7,7 @@ type Props = {}
 const Admin = (props: Props) => {
   return (
     <div>
-      <Overview />
+      <AdminTable />
     </div>
   )
 }
