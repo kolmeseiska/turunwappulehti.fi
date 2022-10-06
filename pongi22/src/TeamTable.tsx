@@ -21,9 +21,11 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
     scores.find((score: Score) => score.teamId === teamId && score.disciplineId === disciplineId)
 
   const isGamesStarted = !!scores.some(({ value }) => value != null)
+
+  const calculateTotalScore = (teamId: RecordId) => scores.filter(score => score.teamId === teamId).reduce((acc, score: Score) => acc + Number(score.value), 0)
   const sortedTeams: Team[] = teams.sort((a: Team, b: Team) => {
-    const rankA = scores.filter(({ teamId }) => teamId === a.id).reduce((acc, score: Score) => acc + Number(score.value), 0)
-    const rankB = scores.filter(({ teamId }) => teamId === b.id).reduce((acc, score: Score) => acc + Number(score.value), 0)
+    const rankA = calculateTotalScore(a.id)
+    const rankB = calculateTotalScore(b.id)
     return rankB - rankA
   })
 
@@ -47,6 +49,9 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
           )
         }
         )}
+        <Td paddingX={CELL_PADDING} isNumeric>
+          {calculateTotalScore(team.id)}
+        </Td>
       </Tr>
     )
   })
@@ -62,6 +67,9 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
               Joukkue
             </Th>
             {headers}
+            <Th paddingX={CELL_PADDING}>
+              Pisteet
+            </Th>
           </Tr>
         </Thead>
         <Tbody>

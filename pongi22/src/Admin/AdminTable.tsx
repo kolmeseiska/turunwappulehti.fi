@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import {
+  Box,
   Button,
   IconButton,
   Input,
@@ -58,9 +59,9 @@ const scoreColumn: Partial<ColumnDef<any>> = {
         onBlur={onBlur}
         min={0}
         max={20}
-        maxW={20}
+        width='80px'
       >
-        <NumberInputField />
+        <NumberInputField/>
         <NumberInputStepper>
           <NumberIncrementStepper />
           <NumberDecrementStepper />
@@ -117,7 +118,7 @@ function AdminTable() {
   const columns = React.useMemo<ColumnDef<any>[]>(() => [
     {
       header: '#',
-      cell: ({ row }) => `#${row.index + 1}`,
+      cell: ({ row }) => `${row.index + 1}.`,
     },
     {
       header: 'Joukkue',
@@ -134,6 +135,7 @@ function AdminTable() {
   const mutateDiscipline = useMutateFirebaseRecord<Discipline>('discipline')
   const mutateScore = useMutateFirebaseRecord<Score>('score')
 
+  const calculateTotalScore = (teamId: RecordId) => scores.filter(score => score.teamId === teamId).reduce((acc, score: Score) => acc + Number(score.value), 0)
   const table = useReactTable({
     data,
     columns,
@@ -160,9 +162,6 @@ function AdminTable() {
                       key={header.id}
                       colSpan={header.colSpan}
                       paddingX={3}
-                      style={{
-                        width: header.getSize()
-                      }}
                     >
                       {
                         header.isPlaceholder ? null : (
@@ -177,6 +176,9 @@ function AdminTable() {
                     </Th>
                   )
                 })}
+                <Th paddingX={3}>
+                  PISTEET
+                </Th>
                 <Th>
                   <InputGroup>
                     <Input
@@ -208,9 +210,6 @@ function AdminTable() {
                       <Td
                         key={cell.id}
                         paddingX={3}
-                        style={{
-                          width: cell.column.getSize()
-                        }}
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
@@ -219,34 +218,35 @@ function AdminTable() {
                       </Td>
                     )
                   })}
+                  <Td paddingX={3} isNumeric>
+                    {calculateTotalScore(row.original.teamId)}
+                  </Td>
                   <Td />
                 </Tr>
               )
             })}
           </Tbody>
-          <Tfoot>
-            <Tr>
-              <Td>
-                <InputGroup>
-                  <Input
-                    value={newTeam as string}
-                    onChange={e => setNewTeam(e.target.value)}
-                    placeholder='Joukkueen nimi'
-                  />
-                  <InputRightElement>
-                    <IconButton
-                      size='sm'
-                      aria-label='Lisää joukkue'
-                      icon={<AddIcon />}
-                      disabled={!newTeam.length}
-                      onClick={onClickCreateTeam}
-                    />
-                  </InputRightElement>
-                </InputGroup>
-              </Td>
-            </Tr>
-          </Tfoot>
         </ChTable>
+
+        <Box maxWidth={200} marginY={5}>
+          <InputGroup>
+            <Input
+              value={newTeam as string}
+              onChange={e => setNewTeam(e.target.value)}
+              placeholder='Joukkueen nimi'
+              minWidth={40}
+            />
+            <InputRightElement>
+              <IconButton
+                size='sm'
+                aria-label='Lisää joukkue'
+                icon={<AddIcon />}
+                disabled={!newTeam.length}
+                onClick={onClickCreateTeam}
+              />
+            </InputRightElement>
+          </InputGroup>
+        </Box>
       </TableContainer>
     </div >
   )
