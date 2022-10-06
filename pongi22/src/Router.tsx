@@ -12,7 +12,6 @@ const AppRouter = ({ children }: Props) => {
   return (
     <Router
       location={location}
-      basepath='/pongi2022'
       routes={[
         {
           path: "/",
