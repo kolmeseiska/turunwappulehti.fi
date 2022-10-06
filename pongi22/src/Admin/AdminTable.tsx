@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import { AddIcon } from '@chakra-ui/icons'
 import {
   Box,
-  Button,
   IconButton,
   Input,
   InputGroup,
@@ -14,13 +13,10 @@ import {
   Table as ChTable,
   TableContainer,
   Tbody,
-  Td,
-  Tfoot,
-  Th,
+  Td, Th,
   Thead,
   Tr
 } from '@chakra-ui/react'
-import { AddIcon } from '@chakra-ui/icons'
 import {
   ColumnDef,
   flexRender,
@@ -28,6 +24,7 @@ import {
   RowData,
   useReactTable
 } from '@tanstack/react-table'
+import React from 'react'
 import { useFirebaseRecords, useMutateFirebaseRecord } from '../firebaseHooks'
 
 declare module '@tanstack/react-table' {
@@ -61,7 +58,7 @@ const scoreColumn: Partial<ColumnDef<any>> = {
         max={20}
         width='80px'
       >
-        <NumberInputField/>
+        <NumberInputField />
         <NumberInputStepper>
           <NumberIncrementStepper />
           <NumberDecrementStepper />
@@ -151,7 +148,7 @@ function AdminTable() {
   const onClickCreateDiscipline = () => createRecordHandler(newDiscipline, setNewDiscipline, mutateDiscipline)
   return (
     <div className="p-2">
-      <TableContainer className="h-2" overflowX>
+      <TableContainer className="h-2" overflowX='auto'>
         <ChTable variant='striped' colorScheme='gray' size='sm'>
           <Thead>
             {table.getHeaderGroups().map((headerGroup: any) => (
