@@ -116,6 +116,10 @@ function AdminTable() {
 
   const columns = React.useMemo<ColumnDef<any>[]>(() => [
     {
+      header: '#',
+      cell: ({ row }) => `#${row.index + 1}`,
+    },
+    {
       header: 'Joukkue',
       accessorKey: 'teamName',
     },
@@ -145,22 +149,31 @@ function AdminTable() {
   const onClickCreateDiscipline = () => createRecordHandler(newDiscipline, setNewDiscipline, mutateDiscipline)
   return (
     <div className="p-2">
-      <TableContainer className="h-2" >
-        <ChTable variant='simple'>
+      <TableContainer className="h-2" overflowX>
+        <ChTable variant='striped' colorScheme='gray' size='sm'>
           <Thead>
             {table.getHeaderGroups().map((headerGroup: any) => (
               <Tr key={headerGroup.id}>
                 {headerGroup.headers.map((header: any) => {
                   return (
-                    <Th key={header.id} colSpan={header.colSpan}>
-                      {header.isPlaceholder ? null : (
-                        <div>
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                        </div>
-                      )}
+                    <Th
+                      key={header.id}
+                      colSpan={header.colSpan}
+                      paddingX={3}
+                      style={{
+                        width: header.getSize()
+                      }}
+                    >
+                      {
+                        header.isPlaceholder ? null : (
+                          <div>
+                            {flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                          </div>
+                        )
+                      }
                     </Th>
                   )
                 })}
@@ -170,6 +183,7 @@ function AdminTable() {
                       value={newDiscipline as string}
                       onChange={e => setNewDiscipline(e.target.value)}
                       placeholder='Laji'
+                      minWidth={40}
                     />
                     <InputRightElement>
                       <IconButton
@@ -191,7 +205,13 @@ function AdminTable() {
                 <Tr key={row.id}>
                   {row.getVisibleCells().map((cell: any) => {
                     return (
-                      <Td key={cell.id}>
+                      <Td
+                        key={cell.id}
+                        paddingX={3}
+                        style={{
+                          width: cell.column.getSize()
+                        }}
+                      >
                         {flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext()
@@ -228,7 +248,7 @@ function AdminTable() {
           </Tfoot>
         </ChTable>
       </TableContainer>
-    </div>
+    </div >
   )
 }
 
