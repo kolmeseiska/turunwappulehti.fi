@@ -56,7 +56,7 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
     )
   })
   return (
-    <TableContainer>
+    <TableContainer overflowX='auto'>
       <Table variant='simple'>
         <Thead>
           <Tr>
