@@ -1,13 +1,52 @@
-import React from 'react'
+import { InfoIcon, LockIcon } from '@chakra-ui/icons'
+import { Button, Icon, Link, Spinner, Text } from '@chakra-ui/react'
+import { useAuth } from '../auth'
+import { useFirebaseRecords } from '../firebaseHooks'
 import AdminTable from './AdminTable'
-import Overview from './Overview'
 
 type Props = {}
 
 const Admin = (props: Props) => {
+  const { user, logIn, isLoading } = useAuth()
+  const users = useFirebaseRecords<AuthUser>('user')
+
+  if (isLoading || !users.length) {
+    return <Spinner />
+  }
+
+  if (!user) {
+    return (
+      <Button
+        leftIcon={<LockIcon />}
+        onClick={logIn}
+      >
+        Kirjaudu sisään
+      </Button>
+    )
+  }
+
+  const isAuthor = users.some(({ email }) => email === user.email)
+  if (!isAuthor) {
+    return (
+      <>
+        <Text fontSize='2xl' fontStyle='bold'>
+          En tunnista sinua :(
+          <br />
+          <Link color='teal.500' href='/'>
+            Siirry tulospalveluun
+          </Link>
+        </Text>
+      </>
+    )
+  }
   return (
     <div>
-      <AdminTable />
+      {user
+        ? <AdminTable />
+        : (
+          null
+        )
+      }
     </div>
   )
 }

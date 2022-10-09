@@ -21,6 +21,7 @@ enum FbEndpoints {
   TEAM = 'team',
   DISCIPLINE = 'discipline',
   SCORE = 'score',
+  USER = 'user'
 }
 type FbEndpoint = `${FbEndpoints}`
 
@@ -42,4 +43,9 @@ type Score = {
   teamId: RecordId,
   disciplineId: RecordId,
   value: number | null
+}
+
+type AuthUser = {
+  id: RecordId,
+  email: string
 }

@@ -21,6 +21,8 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  Header,
+  HeaderGroup,
   RowData,
   useReactTable
 } from '@tanstack/react-table'
@@ -79,6 +81,15 @@ const createRecordHandler = (value: string, setValue: Function, mutateRecord: Fu
     }
   }
 }
+
+type TableDataTeam = {
+  teamId: RecordId,
+  teamName: string,
+}
+type TableDataDisciplines = Record<RecordId, { scoreId: RecordId | null, value: number | null }>
+// TODO: union does not ensure that TableDataTeam keys are present
+type TableData = TableDataDisciplines | TableDataTeam
+
 function AdminTable() {
   const teams = useFirebaseRecords<Team>('team')
   const scores = useFirebaseRecords<Score>('score')
@@ -87,11 +98,11 @@ function AdminTable() {
   const data = React.useMemo(() => {
     const getScore = (teamId: RecordId, disciplineId: RecordId): Score | null =>
       scores.find((score: Score) => score.teamId === teamId && score.disciplineId === disciplineId) || null
-    return teams.map(team => {
+    return teams.map((team): TableData => {
       return {
         teamId: team.id,
         teamName: team.name,
-        ...disciplines.reduce((acc, discipline) => {
+        ...disciplines.reduce<TableDataDisciplines>((acc, discipline) => {
           const score = getScore(team.id, discipline.id)
           return {
             ...acc,
@@ -100,7 +111,7 @@ function AdminTable() {
               value: score?.value || null
             }
           }
-        }, {})
+        }, {} as TableDataDisciplines)
       }
     })
   }, [teams, disciplines, scores])
@@ -151,9 +162,9 @@ function AdminTable() {
       <TableContainer className="h-2" overflowX='auto'>
         <ChTable variant='striped' colorScheme='gray' size='sm'>
           <Thead>
-            {table.getHeaderGroups().map((headerGroup: any) => (
+            {table.getHeaderGroups().map(headerGroup => (
               <Tr key={headerGroup.id}>
-                {headerGroup.headers.map((header: any) => {
+                {headerGroup.headers.map((header) => {
                   return (
                     <Th
                       key={header.id}
