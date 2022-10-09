@@ -1,5 +1,4 @@
 import { Outlet, ReactLocation, Router } from '@tanstack/react-location';
-import Admin from './Admin';
 import ResultService from './ResultService';
 
 type Props = {
@@ -19,7 +18,7 @@ const AppRouter = ({ children }: Props) => {
         },
         {
           path: "admin",
-          element: <Admin />,
+          element: () => import('./Admin').then((mod) => <mod.default />),
         },
       ]}
     >
