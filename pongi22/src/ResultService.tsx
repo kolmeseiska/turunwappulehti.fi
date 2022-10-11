@@ -1,8 +1,5 @@
-import { Button } from '@chakra-ui/react'
-import { push, ref, set } from "firebase/database"
-import { database } from './db'
-import TeamTable from './TeamTable'
 import { useFirebaseRecords } from './firebaseHooks'
+import TeamTable from './TeamTable'
 
 
 const ResultService = () => {
@@ -10,11 +7,13 @@ const ResultService = () => {
   const scores = useFirebaseRecords<Score>('score')
   const disciplines = useFirebaseRecords<Discipline>('discipline')
   return (
-    <TeamTable
-      teams={teams}
-      disciplines={disciplines}
-      scores={scores}
-    />
+    <div id='games'>
+      <TeamTable
+        teams={teams}
+        disciplines={disciplines}
+        scores={scores}
+      />
+    </div>
   )
 }
 

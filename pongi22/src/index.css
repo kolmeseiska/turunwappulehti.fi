@@ -23,6 +23,11 @@
   text-align: center;
 }
 
+#games {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 a {
   font-weight: 500;
   color: #646cff;

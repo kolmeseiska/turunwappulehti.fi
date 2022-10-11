@@ -10,11 +10,15 @@ type Props = {
   disciplines: Discipline[]
 }
 
-const CELL_PADDING = 5
+const CELL_PADDING_X = 3
+const CELL_PADDING_Y = 3
 
 const TeamTable = ({ teams, scores, disciplines }: Props) => {
-  const headers = disciplines.map(({ id, name }: Discipline) => (
-    <Th key={id} paddingX={CELL_PADDING}>
+  const visibleDisciplines = disciplines.filter(({ id }) =>
+    scores.some(({ disciplineId, value }) => disciplineId === id && Number.isFinite(value))
+  )
+  const headers = visibleDisciplines.map(({ id, name }) => (
+    <Th key={id} paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} width='14ch'>
       {name}
     </Th>
   ))
@@ -33,14 +37,18 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
     return (
       <Tr key={team.id}>
         <Td
-          paddingX={CELL_PADDING}>
+          paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y}>
           {isGamesStarted
             ? <Rank rank={index + 1} />
             : '#'
           }
         </Td>
-        <Td>{team.name}</Td>
-        {disciplines.map(discipline => {
+        <Td
+          paddingY={CELL_PADDING_Y}
+        >
+          {team.name}
+        </Td>
+        {visibleDisciplines.map(discipline => {
           const score = getScore(team.id, discipline.id)
           return (
             <Td key={score?.id || `${team.id}-${discipline.id}`}>
@@ -49,8 +57,8 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
           )
         }
         )}
-        <Td paddingX={CELL_PADDING} isNumeric>
-          {calculateTotalScore(team.id)}
+        <Td paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} isNumeric>
+          {calculateTotalScore(team.id, scores)}
         </Td>
       </Tr>
     )
@@ -60,14 +68,14 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
       <Table variant='simple'>
         <Thead>
           <Tr>
-            <Th paddingX={CELL_PADDING} maxWidth={'12ch'}>
+            <Th paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} width='8ch'>
               Sijoitus
             </Th>
-            <Th paddingX={CELL_PADDING}>
+            <Th paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} width='12ch'>
               Joukkue
             </Th>
             {headers}
-            <Th paddingX={CELL_PADDING}>
+            <Th paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} isNumeric>
               Pisteet
             </Th>
           </Tr>
