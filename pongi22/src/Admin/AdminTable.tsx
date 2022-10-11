@@ -28,6 +28,7 @@ import {
 } from '@tanstack/react-table'
 import React from 'react'
 import { useFirebaseRecords, useMutateFirebaseRecord } from '../firebaseHooks'
+import { calculateTotalScore } from '../helpers'
 
 declare module '@tanstack/react-table' {
   interface TableMeta<TData extends RowData> {
@@ -48,7 +49,7 @@ const scoreColumn: Partial<ColumnDef<any>> = {
       table.options.meta?.updateData(scoreData, score.scoreId)
     }
     React.useEffect(() => {
-      setValue(score?.value)
+      setValue(score?.value || null)
     }, [score?.value])
 
     return (
@@ -82,13 +83,13 @@ const createRecordHandler = (value: string, setValue: Function, mutateRecord: Fu
   }
 }
 
-type TableDataTeam = {
+type ScoreData = { scoreId: RecordId | null, value: number | null }
+type TableDataDisciplines = Record<RecordId, ScoreData>
+type TableData = {
   teamId: RecordId,
   teamName: string,
+  [key: string]: string | ScoreData
 }
-type TableDataDisciplines = Record<RecordId, { scoreId: RecordId | null, value: number | null }>
-// TODO: union does not ensure that TableDataTeam keys are present
-type TableData = TableDataDisciplines | TableDataTeam
 
 function AdminTable() {
   const teams = useFirebaseRecords<Team>('team')
@@ -143,7 +144,6 @@ function AdminTable() {
   const mutateDiscipline = useMutateFirebaseRecord<Discipline>('discipline')
   const mutateScore = useMutateFirebaseRecord<Score>('score')
 
-  const calculateTotalScore = (teamId: RecordId) => scores.filter(score => score.teamId === teamId).reduce((acc, score: Score) => acc + Number(score.value), 0)
   const table = useReactTable({
     data,
     columns,
@@ -227,7 +227,7 @@ function AdminTable() {
                     )
                   })}
                   <Td paddingX={3} isNumeric>
-                    {calculateTotalScore(row.original.teamId)}
+                    {calculateTotalScore(row.original.teamId, scores)}
                   </Td>
                   <Td />
                 </Tr>

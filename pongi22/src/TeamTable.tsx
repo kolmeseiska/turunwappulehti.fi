@@ -1,6 +1,7 @@
 import {
   Table, TableContainer, Tbody, Td, Th, Thead, Tr
 } from '@chakra-ui/react'
+import { calculateTotalScore } from './helpers'
 import Rank from './Rank'
 
 type Props = {
@@ -22,10 +23,9 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
 
   const isGamesStarted = !!scores.some(({ value }) => value != null)
 
-  const calculateTotalScore = (teamId: RecordId) => scores.filter(score => score.teamId === teamId).reduce((acc, score: Score) => acc + Number(score.value), 0)
   const sortedTeams: Team[] = teams.sort((a: Team, b: Team) => {
-    const rankA = calculateTotalScore(a.id)
-    const rankB = calculateTotalScore(b.id)
+    const rankA = calculateTotalScore(a.id, scores)
+    const rankB = calculateTotalScore(b.id, scores)
     return rankB - rankA
   })
 
