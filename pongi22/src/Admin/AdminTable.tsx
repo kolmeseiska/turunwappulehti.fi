@@ -25,6 +25,7 @@ import {
   useReactTable
 } from '@tanstack/react-table'
 import React from 'react'
+import TeamColors from '../TeamColors'
 import { useFirebaseRecords, useMutateFirebaseRecord } from '../firebaseHooks'
 import { calculateTotalScore } from '../helpers'
 
@@ -86,7 +87,8 @@ type TableDataDisciplines = Record<RecordId, ScoreData>
 type TableData = {
   teamId: RecordId,
   teamName: string,
-  [key: string]: string | ScoreData
+  colors: FbColors,
+  [key: string]: string | FbColors | ScoreData
 }
 
 function AdminTable() {
@@ -101,6 +103,7 @@ function AdminTable() {
       return {
         teamId: team.id,
         teamName: team.name,
+        colors: team.colors || {},
         ...disciplines.reduce<TableDataDisciplines>((acc, discipline) => {
           const score = getScore(team.id, discipline.id)
           return {
@@ -130,6 +133,11 @@ function AdminTable() {
     {
       header: 'Joukkue',
       accessorKey: 'teamName',
+    },
+    {
+      header: 'Värit',
+      accessorKey: 'colors',
+      cell: ({ getValue }) => <TeamColors colors={getValue<FbColors>()} />
     },
     ...headers
   ], [headers])

@@ -1,8 +1,12 @@
 import {
+  Box,
+  HStack,
+  Spinner,
   Table, TableContainer, Tbody, Td, Th, Thead, Tr
 } from '@chakra-ui/react'
 import { calculateTotalScore } from './helpers'
 import Rank from './Rank'
+import TeamColors from './TeamColors'
 import useScrollHint from './useScrollHint'
 
 type Props = {
@@ -40,16 +44,24 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
     return (
       <Tr key={team.id}>
         <Td
-          paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y}>
+          paddingX={CELL_PADDING_X}
+          paddingY={CELL_PADDING_Y}
+        >
           {isGamesStarted
             ? <Rank rank={index + 1} />
             : '#'
           }
         </Td>
         <Td
+          paddingX={CELL_PADDING_X}
           paddingY={CELL_PADDING_Y}
         >
-          {team.name}
+          <HStack>
+            <TeamColors colors={team.colors} />
+            <Box>
+              {team.name}
+            </Box>
+          </HStack>
         </Td>
         {visibleDisciplines.map(discipline => {
           const score = getScore(team.id, discipline.id)
@@ -66,8 +78,9 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
       </Tr>
     )
   })
+
   return (
-    <TableContainer overflowX='auto'>
+    <TableContainer id='teamTable' overflowX='auto'>
       <Table variant='simple'>
         <Thead>
           <Tr>
