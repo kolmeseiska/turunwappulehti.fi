@@ -3,6 +3,7 @@ import {
 } from '@chakra-ui/react'
 import { calculateTotalScore } from './helpers'
 import Rank from './Rank'
+import useScrollHint from './useScrollHint'
 
 type Props = {
   teams: Team[],
@@ -32,6 +33,8 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
     const rankB = calculateTotalScore(b.id, scores)
     return rankB - rankA
   })
+
+  useScrollHint(headers.length ? '#teamTable' : null)
 
   const rows = sortedTeams.map((team: Team, index) => {
     return (
