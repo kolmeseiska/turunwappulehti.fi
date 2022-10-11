@@ -55,6 +55,11 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
         <Td
           paddingX={CELL_PADDING_X}
           paddingY={CELL_PADDING_Y}
+          style={{
+            position: 'sticky',
+            background: '#252525',
+            left: 0
+          }}
         >
           <HStack>
             <TeamColors colors={team.colors} />
@@ -87,7 +92,12 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
             <Th paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} width='8ch'>
               Sijoitus
             </Th>
-            <Th paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} width='12ch'>
+            <Th paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} width='12ch' 
+          style={{
+            position: 'sticky',
+            background: '#252525',
+            left: 0
+          }}>
               Joukkue
             </Th>
             {headers}
