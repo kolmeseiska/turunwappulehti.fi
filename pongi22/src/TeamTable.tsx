@@ -15,15 +15,12 @@ type Props = {
   disciplines: Discipline[]
 }
 
-const CELL_PADDING_X = 3
-const CELL_PADDING_Y = 3
-
 const TeamTable = ({ teams, scores, disciplines }: Props) => {
   const visibleDisciplines = disciplines.filter(({ id }) =>
     scores.some(({ disciplineId, value }) => disciplineId === id && Number.isFinite(value))
   )
   const headers = visibleDisciplines.map(({ id, name }) => (
-    <Th key={id} paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} width='14ch'>
+    <Th key={id} width='14ch'>
       {name}
     </Th>
   ))
@@ -43,24 +40,13 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
   const rows = sortedTeams.map((team: Team, index) => {
     return (
       <Tr key={team.id}>
-        <Td
-          paddingX={CELL_PADDING_X}
-          paddingY={CELL_PADDING_Y}
-        >
+        <Td>
           {isGamesStarted
             ? <Rank rank={index + 1} />
             : '#'
           }
         </Td>
-        <Td
-          paddingX={CELL_PADDING_X}
-          paddingY={CELL_PADDING_Y}
-          style={{
-            position: 'sticky',
-            background: '#252525',
-            left: 0
-          }}
-        >
+        <Td className='sticky-column'>
           <HStack>
             <TeamColors colors={team.colors} />
             <Box>
@@ -71,13 +57,13 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
         {visibleDisciplines.map(discipline => {
           const score = getScore(team.id, discipline.id)
           return (
-            <Td key={score?.id || `${team.id}-${discipline.id}`}>
+            <Td key={score?.id || `${team.id}-${discipline.id}`} isNumeric>
               {score?.value ?? '-'}
             </Td>
           )
         }
         )}
-        <Td paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} isNumeric>
+        <Td isNumeric>
           {calculateTotalScore(team.id, scores)}
         </Td>
       </Tr>
@@ -86,22 +72,17 @@ const TeamTable = ({ teams, scores, disciplines }: Props) => {
 
   return (
     <TableContainer id='teamTable' overflowX='auto'>
-      <Table variant='simple'>
+      <Table variant='simple' size={['sm', 'md']}>
         <Thead>
           <Tr>
-            <Th paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} width='8ch'>
+            <Th width='8ch'>
               Sijoitus
             </Th>
-            <Th paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} width='12ch' 
-          style={{
-            position: 'sticky',
-            background: '#252525',
-            left: 0
-          }}>
+            <Th width='12ch' className='sticky-column'> 
               Joukkue
             </Th>
             {headers}
-            <Th paddingX={CELL_PADDING_X} paddingY={CELL_PADDING_Y} isNumeric>
+            <Th isNumeric>
               Pisteet
             </Th>
           </Tr>
