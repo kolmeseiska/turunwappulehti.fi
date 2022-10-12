@@ -222,7 +222,6 @@ function AdminTable() {
               return (
                 <Tr key={row.id}>
                   {row.getVisibleCells().map((cell: any) => {
-                    console.log(cell)
                     return (
                       <Td
                         key={cell.id}
