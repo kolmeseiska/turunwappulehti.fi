@@ -59,6 +59,7 @@ const scoreColumn: Partial<ColumnDef<any>> = {
         min={0}
         max={20}
         width='80px'
+        size='sm'
       >
         <NumberInputField />
         <NumberInputStepper>
@@ -176,6 +177,7 @@ function AdminTable() {
                       key={header.id}
                       colSpan={header.colSpan}
                       paddingX={3}
+                      className={header.id === 'teamName' ? 'sticky-column' : ''}
                     >
                       {
                         header.isPlaceholder ? null : (
@@ -220,10 +222,12 @@ function AdminTable() {
               return (
                 <Tr key={row.id}>
                   {row.getVisibleCells().map((cell: any) => {
+                    console.log(cell)
                     return (
                       <Td
                         key={cell.id}
                         paddingX={3}
+                        className={cell.id.includes('teamName') ? 'sticky-column' : ''}
                       >
                         {flexRender(
                           cell.column.columnDef.cell,

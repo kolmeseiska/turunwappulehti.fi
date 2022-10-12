@@ -73,6 +73,7 @@ button:focus-visible {
   position: sticky;
   background: #252525;
   left: 0;
+  z-index: 1;
 }
 
 @media (prefers-color-scheme: light) {
