@@ -7,9 +7,6 @@ import {
   InputRightElement,
   NumberDecrementStepper,
   NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
   Table as ChTable,
   TableContainer,
   Tbody,
@@ -52,21 +49,15 @@ const scoreColumn: Partial<ColumnDef<any>> = {
     }, [score?.value])
 
     return (
-      <NumberInput
+      <Input
         value={value ?? ''}
-        onChange={(__string, valueAsNumber) => Number.isFinite(valueAsNumber) ? setValue(valueAsNumber) : setValue(null)}
+        onChange={value => Number.isFinite(Number(value)) ? setValue(Number(value)) : setValue(null)}
         onBlur={onBlur}
         min={0}
         max={20}
         width='80px'
         size='sm'
-      >
-        <NumberInputField />
-        <NumberInputStepper>
-          <NumberIncrementStepper />
-          <NumberDecrementStepper />
-        </NumberInputStepper>
-      </NumberInput>
+      />
     )
   },
 }

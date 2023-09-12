@@ -16,10 +16,11 @@ const AppRouter = ({ children }: Props) => {
           path: "/",
           element: <ResultService />,
         },
-        {
-          path: "admin",
-          element: () => import('./Admin').then((mod) => <mod.default />),
-        },
+        // Not connected to firebase anymore
+        // {
+        //   path: "admin",
+        //   element: () => import('./Admin').then((mod) => <mod.default />),
+        // },
       ]}
     >
       {children}

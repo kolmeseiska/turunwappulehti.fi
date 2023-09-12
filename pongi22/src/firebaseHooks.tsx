@@ -2,6 +2,8 @@ import { onValue, push, ref, set, update } from "firebase/database"
 import React from 'react'
 import { database } from './db'
 
+
+
 export function useFirebaseRecords<T>(endpoint: FbEndpoint) {
   const [records, setRecords] = React.useState<T[]>([])
 

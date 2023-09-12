@@ -1,12 +1,16 @@
 import { Spinner } from '@chakra-ui/react'
-import { useFirebaseRecords } from './firebaseHooks'
+import { results } from './fixedResults2022'
 import TeamTable from './TeamTable'
 
 
 const ResultService = () => {
-  const teams = useFirebaseRecords<Team>('team')
-  const scores = useFirebaseRecords<Score>('score')
-  const disciplines = useFirebaseRecords<Discipline>('discipline')
+  const {
+    teams,
+    scores,
+    disciplines,
+  } = results
+
+
 
   const isLoading = !teams.length || !disciplines.length
   return (
